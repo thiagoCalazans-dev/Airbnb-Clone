@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { Avatar } from "../Avatar";
 import { useCallback, useState } from "react";
 import { MenuItem } from "./MenuItem";
+import { useRegisterModal } from "@/hooks/useRegisterModal";
 
 interface UserMenuProps {}
 
 export function UserMenu({}: UserMenuProps) {
+  const registerModal = useRegisterModal();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
@@ -76,7 +78,7 @@ export function UserMenu({}: UserMenuProps) {
           <div className="flex flex-col cursor-pointer">
             <>
               <MenuItem label="Login" onClick={() => {}} />
-              <MenuItem label="Sign Up" onClick={() => {}} />
+              <MenuItem label="Sign Up" onClick={registerModal.onOpen} />
             </>
           </div>
         </div>
